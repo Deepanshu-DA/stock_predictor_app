@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Sentiment Predictor</title>
+</head>
+<body>
+    <h1>Stock Price Prediction</h1>
+    <form method="post">
+        <input type="text" name="stockSymbol" placeholder="Enter Stock Symbol (e.g., AAPL)" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    {% if stock_symbol %}
+        <h2>Results for {{ stock_symbol }}</h2>
+        <p><strong>Predicted Price:</strong> {{ predicted_price }}</p>
+        <p><strong>Sentiment Score:</strong> {{ sentiment_score }}</p>
+        <h3>Recent News Headlines</h3>
+        <ul>
+            {% for headline in news_headlines %}
+                <li>{{ headline }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
